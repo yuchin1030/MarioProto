@@ -40,7 +40,6 @@ private:
 	UPROPERTY(EditAnywhere)
 	float ChangeTargetDelay=3.5f;
 
-
 	UPROPERTY(EditAnywhere)
 	int32 ChangeNumber=0;
 
@@ -64,12 +63,6 @@ public:
 	UPROPERTY(EditAnywhere,BlueprintReadWrite)
 	USkeletalMeshComponent* TurretMesh;
 
-	UPROPERTY(EditAnywhere,BlueprintReadWrite)
-	UAnimSequence* Anim;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	int32 KoopaStamina=57;
-
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -77,8 +70,5 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-
-
-
 
 };

@@ -35,17 +35,13 @@ ACppTurret::ACppTurret()
 
 	FollowTarget = CreateDefaultSubobject<USceneComponent>(TEXT("FollowTarget"));
 	FollowTarget->SetupAttachment(Root);
-
-	static ConstructorHelpers::FObjectFinder<UAnimSequence> anim(TEXT("/Script/Engine.AnimSequence'/Game/KOOPA/SpinAttack/Frisbee_Throw__1_1.Frisbee_Throw__1_1'_C"));
-	Anim = anim.Object;
 }
 
 // Called when the game starts or when spawned
 void ACppTurret::BeginPlay()
 {
 	Super::BeginPlay();
-
-	//TurretMesh->PlayAnimation(Anim, false);
+	
 	GetWorldTimerManager().SetTimer(Timerhandle, this, &ACppTurret::ChangeBeamTarget, ChangeTargetDelay, true, 1.f);
 	
 }
