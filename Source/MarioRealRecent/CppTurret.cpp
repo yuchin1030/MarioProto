@@ -42,8 +42,8 @@ void ACppTurret::BeginPlay()
 {
 	Super::BeginPlay();
 	
-	GetWorldTimerManager().SetTimer(Timerhandle, this, &ACppTurret::ChangeBeamTarget, ChangeTargetDelay, true, 1.f);
-	
+	GetWorldTimerManager().SetTimer(ChangeTargetTimerhandle, this, &ACppTurret::ChangeBeamTarget, ChangeTargetDelay, true, 1.f);	
+	GetWorldTimerManager().SetTimer(TraceTimerhandle, this, &ACppTurret::TraceBeam, .1f, true, .1f);
 }
 
 // Called every frame
@@ -51,6 +51,7 @@ void ACppTurret::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 	UpdateLookAtTarget(DeltaTime);
+	//TraceBeam();
 
 }
 //타겟 쫓아가게 만들기
@@ -99,6 +100,20 @@ void ACppTurret::ChangeBeamTarget()
 	//여기까지 목이 돌아갈때 부드럽게 돌아가도록
 
 }
+// 필요 없는 코드. 빔을 쐈을 때 물체에 부딫히면 그 길이를 물체를 통과하지 않도록 조절하는 코드이다(불 변수 이후 if문을 실행하지 않아 작동되지 않는 코드)
+void ACppTurret::TraceBeam()
+{
+	FHitResult HitResult;
+	FVector Start =TurretMesh->GetSocketLocation("BeamSocket");
+	FVector End=Start+Beam1->GetForwardVector()* 1500;
+
+	FCollisionQueryParams CollQueryParams;
+	CollQueryParams.AddIgnoredActor(this);
+
+	bool bHit=GetWorld()->LineTraceSingleByChannel(OUT HitResult, Start, End, ECollisionChannel::ECC_Camera, CollQueryParams);
+
+}
+
 //여기부턴 모자를 날리는 기술
 void ACppTurret::Shoot()
 {
