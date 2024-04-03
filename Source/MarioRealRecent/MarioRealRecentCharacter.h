@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
 #include "Logging/LogMacros.h"
+#include "CharacterInterface.h"
 #include "MarioRealRecentCharacter.generated.h"
 
 class USpringArmComponent;
@@ -16,7 +17,7 @@ struct FInputActionValue;
 DECLARE_LOG_CATEGORY_EXTERN(LogTemplateCharacter, Log, All);
 
 UCLASS(config=Game)
-class AMarioRealRecentCharacter : public ACharacter
+class AMarioRealRecentCharacter : public ACharacter,public ICharacterInterface
 {
 	GENERATED_BODY()
 
@@ -74,6 +75,7 @@ public:
 	/** Returns FollowCamera subobject **/
 	FORCEINLINE class UCameraComponent* GetFollowCamera() const { return FollowCamera; }
 
+	bool IsEnemy_Implementation() override;
 
 
 
@@ -101,5 +103,6 @@ public:
 
 	UPROPERTY(EditAnywhere, Category = "MySettings")
 	TSubclassOf<class AMarioThrowingCap> throwCaps;
+
 };
 

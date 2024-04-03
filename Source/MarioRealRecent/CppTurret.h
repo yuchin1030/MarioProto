@@ -51,6 +51,9 @@ private:
 	UPROPERTY(EditAnywhere)
 	float RotationRateMultiplier=1.f;
 
+	UPROPERTY()
+	AActor* Enemy;
+
 	UFUNCTION()
 	void UpdateLookAtTarget(float DeltaTime);
 
@@ -59,6 +62,9 @@ private:
 
 	UFUNCTION()
 	void TraceBeam();
+
+	UFUNCTION()
+	void CheckEnemy(AActor* HitActor);
 
 	UFUNCTION()
 	void Shoot();
