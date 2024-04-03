@@ -99,11 +99,6 @@ void AMarioRealRecentCharacter::BeginPlay()
 	UE_LOG(LogTemp, Warning, TEXT("Hello"));
 }
 
-bool AMarioRealRecentCharacter::IsEnemy_Implementation()
-{
-	return true;
-}
-
 //////////////////////////////////////////////////////////////////////////
 // Input
 

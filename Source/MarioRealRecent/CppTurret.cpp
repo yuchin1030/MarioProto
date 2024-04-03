@@ -3,7 +3,6 @@
 
 #include "CppTurret.h"
 #include "Kismet/KismetMathLibrary.h"
-#include "CharacterInterface.h"
 #include "TurretAnimInterface.h"
 
 #define OUT
@@ -101,38 +100,18 @@ void ACppTurret::ChangeBeamTarget()
 	//여기까지 목이 돌아갈때 부드럽게 돌아가도록
 
 }
-// 라인트레이스로 캐릭터와의 충돌 감지
+// 필요 없는 코드. 빔을 쐈을 때 물체에 부딫히면 그 길이를 물체를 통과하지 않도록 조절하는 코드이다(불 변수 이후 if문을 실행하지 않아 작동되지 않는 코드)
 void ACppTurret::TraceBeam()
 {
 	FHitResult HitResult;
 	FVector Start =TurretMesh->GetSocketLocation("BeamSocket");
-	FVector End=Start+Beam1->GetForwardVector()* 3000;
+	FVector End=Start+Beam1->GetForwardVector()* 1500;
 
 	FCollisionQueryParams CollQueryParams;
 	CollQueryParams.AddIgnoredActor(this);
 
 	bool bHit=GetWorld()->LineTraceSingleByChannel(OUT HitResult, Start, End, ECollisionChannel::ECC_Camera, CollQueryParams);
 
-	if (bHit) {
-		CheckEnemy(HitResult.GetActor());
-	}
-	else{}
-}
-
-void ACppTurret::CheckEnemy(AActor* HitActor) 
-{
-	if (HitActor->Implements<UCharacterInterface>()) {
-
-		bool bEnemy=ICharacterInterface::Execute_IsEnemy(HitActor);
-
-		if (bEnemy) {
-			Enemy=HitActor;
-			UE_LOG(LogTemp,Warning,TEXT("qqqqqqqqqqqqqqqqqq"));
-		}
-		else {
-			UE_LOG(LogTemp, Warning, TEXT("noooooooooooooooooo"));
-		}
-	}
 }
 
 //여기부턴 모자를 날리는 기술
