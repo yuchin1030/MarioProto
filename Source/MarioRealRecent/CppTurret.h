@@ -30,12 +30,17 @@ private:
 	USceneComponent* FollowTarget;
 
 	UPROPERTY()
-	FTimerHandle Timerhandle;
+	FTimerHandle ChangeTargetTimerhandle;
 
+	UPROPERTY()
+	FTimerHandle TraceTimerhandle;
+
+	//rotation related variables
 	int32 TimerCount = 0;
 	FRotator LookAtRotation;
 	FRotator TargetRotation;
 	FRotator RotationDelta;
+
 
 	UPROPERTY(EditAnywhere)
 	float ChangeTargetDelay=3.5f;
@@ -51,6 +56,9 @@ private:
 
 	UFUNCTION()
 	void ChangeBeamTarget();
+
+	UFUNCTION()
+	void TraceBeam();
 
 	UFUNCTION()
 	void Shoot();
