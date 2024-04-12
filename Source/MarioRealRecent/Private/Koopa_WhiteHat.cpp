@@ -1,0 +1,34 @@
+// Fill out your copyright notice in the Description page of Project Settings.
+
+
+#include "Koopa_WhiteHat.h"
+#include <../../../../../../../Source/Runtime/Engine/Classes/Components/BoxComponent.h>
+#include <../../../../../../../Source/Runtime/Engine/Classes/Components/StaticMeshComponent.h>
+
+// Sets default values
+AKoopa_WhiteHat::AKoopa_WhiteHat()
+{
+ 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+	PrimaryActorTick.bCanEverTick = true;
+	boxComp = CreateDefaultSubobject<UBoxComponent>(TEXT("Box Component"));
+	SetRootComponent(boxComp);
+
+	meshComp = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Static Mesh Component"));
+	meshComp->SetupAttachment(boxComp);
+}
+
+// Called when the game starts or when spawned
+void AKoopa_WhiteHat::BeginPlay()
+{
+	Super::BeginPlay();
+	moveDirection = GetActorForwardVector();
+	SetLifeSpan(10.0f);
+}
+
+// Called every frame
+void AKoopa_WhiteHat::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+	SetActorLocation(GetActorLocation() + moveDirection * moveSpeed * DeltaTime);
+}
+

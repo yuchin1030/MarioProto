@@ -17,6 +17,52 @@ private:
 	USceneComponent* Root;
 
 	UPROPERTY(EditAnywhere)
+	class UArrowComponent* violet1;
+
+	UPROPERTY(EditAnywhere)
+	class UArrowComponent* violet2;
+
+	UPROPERTY(EditAnywhere)
+	class UArrowComponent* violet3;
+
+	UPROPERTY(EditAnywhere)
+	class UArrowComponent* violet4;
+
+	UPROPERTY(EditAnywhere)
+	class UArrowComponent* violet5;
+
+	UPROPERTY(EditAnywhere)
+	class UArrowComponent* violet6;
+
+	UPROPERTY(EditAnywhere)
+	class UArrowComponent* violet7;
+
+	UPROPERTY(EditAnywhere)
+	class UArrowComponent* violet8;
+
+	UPROPERTY(EditAnywhere)
+	class UArrowComponent* spawnArrow;
+
+	UPROPERTY(EditAnywhere)
+	class UArrowComponent* white;
+
+	UPROPERTY(EditAnywhere)
+	float delayTime = 1.5f;
+
+	UPROPERTY(EditAnywhere)
+	float delayTTime = 15.f;
+
+
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<class AKoopa_ball> enemy_bp;
+
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<class AKoopa_Violethat> violet_bp;
+
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<class AKoopa_WhiteHat> white_bp;
+
+	UPROPERTY(EditAnywhere)
 	UStaticMeshComponent* Beam1;
 
 	UPROPERTY(VisibleAnywhere)
@@ -24,6 +70,7 @@ private:
 
 	UPROPERTY(VisibleAnywhere)
 	USceneComponent* Target2;
+
 
 
 	UPROPERTY(VisibleAnywhere)
@@ -51,6 +98,9 @@ private:
 	UPROPERTY(EditAnywhere)
 	float RotationRateMultiplier=1.f;
 
+	UPROPERTY()
+	AActor* Enemy;
+
 	UFUNCTION()
 	void UpdateLookAtTarget(float DeltaTime);
 
@@ -59,6 +109,12 @@ private:
 
 	UFUNCTION()
 	void TraceBeam();
+
+	UFUNCTION()
+	void CheckEnemy(AActor* HitActor);
+
+	UFUNCTION()
+	void FollowEnemy(float DeltaTime);
 
 	UFUNCTION()
 	void Shoot();
@@ -70,6 +126,17 @@ public:
 	
 	UPROPERTY(EditAnywhere,BlueprintReadWrite)
 	USkeletalMeshComponent* TurretMesh;
+	UPROPERTY(EditAnywhere,BlueprintReadWrite)
+	TArray<class UAnimationAsset*> Anims;
+
+	UPROPERTY(EditAnywhere,BlueprintReadWrite)
+	int32 KoopaHealth=47;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	float currentTime = 0;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	float anyTime = 0.0f;
 
 protected:
 	// Called when the game starts or when spawned
@@ -78,5 +145,9 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+
+
+private:
+	
 
 };
