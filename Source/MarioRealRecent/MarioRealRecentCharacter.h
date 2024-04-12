@@ -58,7 +58,7 @@ protected:
 	/** Called for looking input */
 	void Look(const FInputActionValue& Value);
 
-	void Throw(const FInputActionValue& Value);
+	//void Throw(const FInputActionValue& Value);
 			
 
 protected:
@@ -79,27 +79,27 @@ public:
 
 
 
-	UPROPERTY(VisibleAnywhere, Category="MySettings")
+	/*UPROPERTY(VisibleAnywhere, Category="MySettings")
 	class UArrowComponent* arrowComp;
 
 	UPROPERTY(VisibleAnywhere, Category="MySettings")
 	class UBoxComponent* boxComp;
 
 	UPROPERTY(VisibleAnywhere, Category="MySettings")
-	class USkeletalMeshComponent* skmComp;
+	class USkeletalMeshComponent* skmComp;*/
 
 	//UPROPERTY(VisibleAnywhere, Category="MySettings")
 	
 
 
 	// Input Action ´øÁö±â
-	UPROPERTY(EditAnywhere, Category = Input)
+	/*UPROPERTY(EditAnywhere, Category = Input)
 	UInputAction* ThrowAction;
 
 	UPROPERTY(EditAnywhere, Category = "MySettings")
 	bool isOnMario = true;
 
 	UPROPERTY(EditAnywhere, Category = "MySettings")
-	TSubclassOf<class AMarioThrowingCap> throwCaps;
+	TSubclassOf<class AMarioThrowingCap> throwCaps;*/
 };
 

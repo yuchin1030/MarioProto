@@ -63,7 +63,7 @@ AMarioRealRecentCharacter::AMarioRealRecentCharacter()
 
 
 	// ===================================================================================================================
-	arrowComp = CreateDefaultSubobject<UArrowComponent>(TEXT("Arrow1"));
+	/*arrowComp = CreateDefaultSubobject<UArrowComponent>(TEXT("Arrow1"));
 	arrowComp->SetupAttachment(GetMesh());
 	arrowComp->SetRelativeLocation(FVector(0, 10, 90));
 	arrowComp->SetRelativeRotation(FRotator(0, 90, 0));
@@ -79,7 +79,7 @@ AMarioRealRecentCharacter::AMarioRealRecentCharacter()
 	skmComp->SetRelativeScale3D(FVector(0.75));
 
 	GetMesh()->SetRelativeLocation(FVector(0, 0, -90));
-	GetMesh()->SetRelativeRotation(FRotator(0, -90, 0));
+	GetMesh()->SetRelativeRotation(FRotator(0, -90, 0));*/
 }
 
 void AMarioRealRecentCharacter::BeginPlay()
@@ -118,7 +118,7 @@ void AMarioRealRecentCharacter::SetupPlayerInputComponent(UInputComponent* Playe
 		EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &AMarioRealRecentCharacter::Look);
 
 		// 던지기
-		EnhancedInputComponent->BindAction(ThrowAction, ETriggerEvent::Started, this, &AMarioRealRecentCharacter::Throw);
+		//EnhancedInputComponent->BindAction(ThrowAction, ETriggerEvent::Started, this, &AMarioRealRecentCharacter::Throw);
 	}
 	else
 	{
@@ -162,31 +162,31 @@ void AMarioRealRecentCharacter::Look(const FInputActionValue& Value)
 	}
 }
 
-void AMarioRealRecentCharacter::Throw(const FInputActionValue& Value)
-{
-	//if (Controller != nullptr)
-	if (isOnMario)
-	{
-		isOnMario = false;
-
-		// 충돌 옵션 (무조건 내가 설정한 위치에서 생성)
-		FActorSpawnParameters params;
-		params.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
-	
-		// 화살표의 world location 및 rotation 위치에 모자를 생성한다.
-		FVector spawnLoc = arrowComp->GetComponentLocation() + FVector(0,0,10);
-		FRotator spawnRot = arrowComp->GetComponentRotation();
-		FVector spawnScale = arrowComp->GetComponentScale();
-
-		// 마리오 던지는 모자 생성
-		AMarioThrowingCap* spawnedCap = GetWorld()->SpawnActor<AMarioThrowingCap>(throwCaps, spawnLoc, spawnRot, params);
-
-		skmComp->SetVisibility(false);
-
-		
-		// delay
-		// return to player
-
-		isOnMario = true;
-	}
-}
+//void AMarioRealRecentCharacter::Throw(const FInputActionValue& Value)
+//{
+//	//if (Controller != nullptr)
+//	if (isOnMario)
+//	{
+//		isOnMario = false;
+//
+//		// 충돌 옵션 (무조건 내가 설정한 위치에서 생성)
+//		FActorSpawnParameters params;
+//		params.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+//	
+//		// 화살표의 world location 및 rotation 위치에 모자를 생성한다.
+//		FVector spawnLoc = arrowComp->GetComponentLocation() + FVector(0,0,10);
+//		FRotator spawnRot = arrowComp->GetComponentRotation();
+//		FVector spawnScale = arrowComp->GetComponentScale();
+//
+//		// 마리오 던지는 모자 생성
+//		AMarioThrowingCap* spawnedCap = GetWorld()->SpawnActor<AMarioThrowingCap>(throwCaps, spawnLoc, spawnRot, params);
+//
+//		skmComp->SetVisibility(false);
+//
+//		
+//		// delay
+//		// return to player
+//
+//		isOnMario = true;
+//	}
+//}

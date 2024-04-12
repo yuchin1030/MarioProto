@@ -21,35 +21,35 @@ protected:
 public:	
 	virtual void Tick(float DeltaTime) override;
 
-	UPROPERTY(EditAnywhere, Category="MySettings")
-	class UBoxComponent* cupaHatCollision;
+	//UPROPERTY(EditAnywhere, Category="MySettings")
+	//class UBoxComponent* cupaHatCollision;
 
-	UPROPERTY(EditAnywhere, Category="MySettings")
-	class USkeletalMeshComponent* cupaHat;
+	//UPROPERTY(EditAnywhere, Category="MySettings")
+	//class USkeletalMeshComponent* cupaHat;
 
-	UPROPERTY(EditAnywhere, Category="MySettings")
-	class UInterpToMovementComponent* interpMovement;
+	//UPROPERTY(EditAnywhere, Category="MySettings")
+	//class UInterpToMovementComponent* interpMovement;
 
-	UFUNCTION()
-	void CupaHatRotate();
+	//UFUNCTION()
+	//void CupaHatRotate();
 
-	//class UCurveFloat;
+	////class UCurveFloat;
 
-	FTimeline CurveTimeline;
+	//FTimeline CurveTimeline;
 
-	UPROPERTY(EditAnywhere, Category = "Timeline")
-	class UCurveFloat* CurveFloat;
+	//UPROPERTY(EditAnywhere, Category = "Timeline")
+	//class UCurveFloat* CurveFloat;
 
-	UPROPERTY()
-	FRotator StartRot;
+	//UPROPERTY()
+	//FRotator StartRot;
 
-	UPROPERTY()
-	FRotator EndRot;
+	//UPROPERTY()
+	//FRotator EndRot;
 
-	UPROPERTY(EditAnywhere, Category = "Timeline")
-	float offset;	// 내가 줄 값
+	//UPROPERTY(EditAnywhere, Category = "Timeline")
+	//float offset;	// 내가 줄 값
 
-	UFUNCTION()
-	void TimelineProgress(float Value);
+	//UFUNCTION()
+	//void TimelineProgress(float Value);
 
 };

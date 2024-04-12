@@ -23,7 +23,7 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	UPROPERTY(EditAnywhere, Category="MySettings")
+	/*UPROPERTY(EditAnywhere, Category="MySettings")
 	class USkeletalMeshComponent* cap;
 
 	UPROPERTY(EditAnywhere, Category="MySettings")
@@ -39,8 +39,8 @@ public:
 	class USceneComponent* defaultSceneRoot;
 
 	UFUNCTION()
-	void ReturnToPlayer();
+	void ReturnToPlayer();*/
 
 private:
-	class AMarioRealRecentCharacter* FindPlayer_BP();
+	//class AMarioRealRecentCharacter* FindPlayer_BP();
 };

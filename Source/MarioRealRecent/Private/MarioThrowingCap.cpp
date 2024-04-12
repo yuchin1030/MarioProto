@@ -17,7 +17,7 @@ AMarioThrowingCap::AMarioThrowingCap()
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
-	defaultSceneRoot = CreateDefaultSubobject<USceneComponent>(TEXT("DefaultSceneRoot"));
+	/*defaultSceneRoot = CreateDefaultSubobject<USceneComponent>(TEXT("DefaultSceneRoot"));
 	SetRootComponent(defaultSceneRoot);
 
 	cap = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("marioCap"));
@@ -34,7 +34,7 @@ AMarioThrowingCap::AMarioThrowingCap()
 	rotMovement->RotationRate = FRotator(0, 700, 0);
 	proMovement->InitialSpeed = 2500;
 	proMovement->MaxSpeed = 3000;
-	proMovement->ProjectileGravityScale = 0.1f;
+	proMovement->ProjectileGravityScale = 0.1f;*/
 
 
 }
@@ -54,7 +54,7 @@ void AMarioThrowingCap::Tick(float DeltaTime)
 	
 }
 
-void AMarioThrowingCap::ReturnToPlayer()
+/*void AMarioThrowingCap::ReturnToPlayer()
 {
 
 	//UGameplayStatics::GetPlayerCharacter
@@ -63,7 +63,7 @@ void AMarioThrowingCap::ReturnToPlayer()
 	//UKismetSystemLibrary::MoveComponentTo(defaultSceneRoot);
 }
 
-/*AMarioRealRecentCharacter* AMarioThrowingCap::FindPlayer_BP()
+AMarioRealRecentCharacter* AMarioThrowingCap::FindPlayer_BP()
 {
 	// 1. 플레이어의 월드 상의 위치를 찾는다.
 	// 1-1. 현재 월드데이터에서 AMarioRealRecentCharacter 클래스로 된 모든 액터들을 찾는다.
