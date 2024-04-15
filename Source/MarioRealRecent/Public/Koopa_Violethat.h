@@ -31,8 +31,9 @@ public:
 	int32 traceRate = 50;
 
 	UPROPERTY(EditAnywhere, Category="MySettings|Variables")
-	float moveSpeed = 100;
+	float moveSpeed = 200;
 private:
 	FVector moveDirection;
 
+	FRotator VioRot = FRotator(0, 10, 0);
 };

@@ -31,6 +31,7 @@ void AKoopa_Violethat::BeginPlay()
 void AKoopa_Violethat::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+	SetActorRotation(GetActorRotation() + VioRot);
 	SetActorLocation(GetActorLocation() + moveDirection * moveSpeed * DeltaTime);
 }
 

@@ -39,6 +39,7 @@ void AKoopa_WhiteHat::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 	SetActorLocation(GetActorLocation() + moveDirection * moveSpeed * DeltaTime);
+	SetActorRotation(GetActorRotation()+WhiteRot);
 	UE_LOG(LogTemp, Warning, TEXT("hi"));
 }
 
