@@ -4,6 +4,8 @@
 #include "Koopa_WhiteHat.h"
 #include <../../../../../../../Source/Runtime/Engine/Classes/Components/BoxComponent.h>
 #include <../../../../../../../Source/Runtime/Engine/Classes/Components/StaticMeshComponent.h>
+#include <MarioRealRecent/MarioRealRecentCharacter.h>
+#include "EngineUtils.h"
 
 // Sets default values
 AKoopa_WhiteHat::AKoopa_WhiteHat()
@@ -21,7 +23,14 @@ AKoopa_WhiteHat::AKoopa_WhiteHat()
 void AKoopa_WhiteHat::BeginPlay()
 {
 	Super::BeginPlay();
-	moveDirection = GetActorForwardVector();
+	for (TActorIterator<AMarioRealRecentCharacter> player(GetWorld()); player; ++player)
+	{
+		// 자신이 플레이어를 바라보는 방향을 moveDirection으로 설정한다.
+		moveDirection = (player->GetActorLocation() - GetActorLocation()).GetSafeNormal();
+		
+		}
+	
+	//moveDirection = GetActorForwardVector();
 	SetLifeSpan(10.0f);
 }
 
@@ -30,5 +39,6 @@ void AKoopa_WhiteHat::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 	SetActorLocation(GetActorLocation() + moveDirection * moveSpeed * DeltaTime);
+	UE_LOG(LogTemp, Warning, TEXT("hi"));
 }
 

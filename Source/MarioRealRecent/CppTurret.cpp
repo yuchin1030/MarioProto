@@ -44,7 +44,7 @@ ACppTurret::ACppTurret()
 
 
 	spawnArrow = CreateDefaultSubobject<UArrowComponent>(TEXT("Arrow Component"));
-	spawnArrow->SetupAttachment(TurretMesh);
+	spawnArrow->SetupAttachment(Beam1);
 
 	violet1 = CreateDefaultSubobject<UArrowComponent>(TEXT("violet1"));
 	violet1->SetupAttachment(TurretMesh);
@@ -72,6 +72,7 @@ ACppTurret::ACppTurret()
 
 	white = CreateDefaultSubobject<UArrowComponent>(TEXT("White"));
 	white->SetupAttachment(TurretMesh);
+
 }
 
 // Called when the game starts or when spawned
@@ -81,7 +82,15 @@ void ACppTurret::BeginPlay()
 	GetWorldTimerManager().SetTimer(ChangeTargetTimerhandle, this, &ACppTurret::ChangeBeamTarget, ChangeTargetDelay, true, 1.f);	
 	GetWorldTimerManager().SetTimer(TraceTimerhandle, this, &ACppTurret::TraceBeam, .1f, true, .1f);
 
-
+	//GetWorld()->SpawnActor<AKoopa_Violethat>(violet_bp, violet1->GetComponentLocation(), violet1->GetComponentRotation());
+	//GetWorld()->SpawnActor<AKoopa_Violethat>(violet_bp, violet2->GetComponentLocation(), violet2->GetComponentRotation());
+	//GetWorld()->SpawnActor<AKoopa_WhiteHat>(white_bp, white->GetComponentLocation(), white->GetComponentRotation());
+	//GetWorld()->SpawnActor<AKoopa_Violethat>(violet_bp, violet3->GetComponentLocation(), violet3->GetComponentRotation());
+	//GetWorld()->SpawnActor<AKoopa_Violethat>(violet_bp, violet4->GetComponentLocation(), violet4->GetComponentRotation());
+	//GetWorld()->SpawnActor<AKoopa_Violethat>(violet_bp, violet5->GetComponentLocation(), violet5->GetComponentRotation());
+	//GetWorld()->SpawnActor<AKoopa_Violethat>(violet_bp, violet6->GetComponentLocation(), violet6->GetComponentRotation());
+	//GetWorld()->SpawnActor<AKoopa_Violethat>(violet_bp, violet7->GetComponentLocation(), violet7->GetComponentRotation());
+	//GetWorld()->SpawnActor<AKoopa_Violethat>(violet_bp, violet8->GetComponentLocation(), violet8->GetComponentRotation());
 	
 	//TurretMesh->PlayAnimation(Anims[0], false);
 }
@@ -90,24 +99,24 @@ void ACppTurret::BeginPlay()
 void ACppTurret::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-	//UE_LOG(LogTemp, Warning, TEXT("%f"),anyTime);
+	UE_LOG(LogTemp, Warning, TEXT("%f"),anyTime);
 	currentTime += DeltaTime;
 	anyTime += DeltaTime;
+	if (anyTime < 6) {
 	//if(currentTime<120&&currentTime>60){
-		//if (Enemy) {
-			//FollowEnemy(DeltaTime);
-			//if (currentTime > delayTime) {
-			//UE_LOG(LogTemp,Warning,TEXT("hi"));
+		if (Enemy) {
+			FollowEnemy(DeltaTime);
+			if (currentTime > BalldelayTime) {
+			UE_LOG(LogTemp,Warning,TEXT("hi"));
 			//ÄíÆÄ ÆøÅº ³¯¸®±â
-			//GetWorld()->SpawnActor<AKoopa_ball>(enemy_bp, spawnArrow->GetComponentLocation(), spawnArrow->GetComponentRotation());
+			GetWorld()->SpawnActor<AKoopa_ball>(enemy_bp, spawnArrow->GetComponentLocation(), spawnArrow->GetComponentRotation());
 
-			//currentTime = 0;
-			//}
-		//}
-	//	else {
-	if(anyTime<6){
+			currentTime = 0;
+			}
+		}
+		else {
 			UpdateLookAtTarget(DeltaTime);
-			if (currentTime > delayTime) {
+			if (currentTime > BalldelayTime) {
 			//	UE_LOG(LogTemp, Warning, TEXT("hiiiiiiiiiiiiiiiiiiii"));
 			//ÄíÆÄ ÆøÅº ³¯¸®±â
 			GetWorld()->SpawnActor<AKoopa_ball>(enemy_bp, spawnArrow->GetComponentLocation(), spawnArrow->GetComponentRotation());
@@ -116,9 +125,10 @@ void ACppTurret::Tick(float DeltaTime)
 			currentTime = 0;
 			}
 		}
-	if (anyTime < 30 && anyTime>20) {
+	}
+	if ( anyTime>10) {
 		UpdateLookAtTarget(DeltaTime);
-		if (currentTime > delayTTime) {
+		if (currentTime > delayTime) {
 		GetWorld()->SpawnActor<AKoopa_Violethat>(violet_bp, violet1->GetComponentLocation(), violet1->GetComponentRotation());
 		GetWorld()->SpawnActor<AKoopa_Violethat>(violet_bp, violet2->GetComponentLocation(), violet2->GetComponentRotation());
 		GetWorld()->SpawnActor<AKoopa_WhiteHat>(white_bp, white->GetComponentLocation(), white->GetComponentRotation());

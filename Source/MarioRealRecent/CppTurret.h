@@ -47,10 +47,11 @@ private:
 	class UArrowComponent* white;
 
 	UPROPERTY(EditAnywhere)
-	float delayTime = 1.5f;
+	float delayTime = 15.0f;
 
 	UPROPERTY(EditAnywhere)
-	float delayTTime = 15.f;
+	float BalldelayTime = 1.0f;
+
 
 
 	UPROPERTY(EditAnywhere)
@@ -137,6 +138,7 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float anyTime = 0.0f;
+
 
 protected:
 	// Called when the game starts or when spawned
