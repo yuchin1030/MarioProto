@@ -102,7 +102,7 @@ void ACppTurret::Tick(float DeltaTime)
 	UE_LOG(LogTemp, Warning, TEXT("%f"),anyTime);
 	currentTime += DeltaTime;
 	anyTime += DeltaTime;
-	if (anyTime < 6) {
+	if (anyTime < 20) {
 	//if(currentTime<120&&currentTime>60){
 		if (Enemy) {
 			FollowEnemy(DeltaTime);
@@ -126,7 +126,7 @@ void ACppTurret::Tick(float DeltaTime)
 			}
 		}
 	}
-	if ( anyTime>10) {
+	if ( anyTime>70) {
 		UpdateLookAtTarget(DeltaTime);
 		if (currentTime > delayTime) {
 		GetWorld()->SpawnActor<AKoopa_Violethat>(violet_bp, violet1->GetComponentLocation(), violet1->GetComponentRotation());

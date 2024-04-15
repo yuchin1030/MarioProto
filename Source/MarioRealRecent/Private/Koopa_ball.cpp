@@ -11,11 +11,9 @@ AKoopa_ball::AKoopa_ball()
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 	boxComp = CreateDefaultSubobject<UBoxComponent>(TEXT("Box Component"));
-	SetRootComponent(boxComp);
 	boxComp->SetBoxExtent(FVector(50));
 
 	meshComp = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Static Mesh Component"));
-	meshComp->SetupAttachment(boxComp);
 	meshComp->SetRelativeLocation(FVector(0, 0, -50));
 }
 

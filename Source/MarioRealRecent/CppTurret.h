@@ -47,7 +47,7 @@ private:
 	class UArrowComponent* white;
 
 	UPROPERTY(EditAnywhere)
-	float delayTime = 15.0f;
+	float delayTime = 10.0f;
 
 	UPROPERTY(EditAnywhere)
 	float BalldelayTime = 1.0f;
@@ -138,6 +138,9 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float anyTime = 0.0f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	bool isSpin = false;
 
 
 protected:
