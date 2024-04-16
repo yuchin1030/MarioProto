@@ -38,8 +38,28 @@ void AKoopa_WhiteHat::BeginPlay()
 void AKoopa_WhiteHat::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-	SetActorLocation(GetActorLocation() + moveDirection * moveSpeed * DeltaTime);
-	SetActorRotation(GetActorRotation()+WhiteRot);
-	UE_LOG(LogTemp, Warning, TEXT("hi"));
+
+	VioDel = VioDel + DeltaTime;
+	if (VioDel > 4) {
+		if (VioDel > 5 && VioDel < 5.5f) {
+			for (TActorIterator<AMarioRealRecentCharacter> player(GetWorld()); player; ++player)
+			{
+				// 자신이 플레이어를 바라보는 방향을 moveDirection으로 설정한다.
+				moveDirection = (player->GetActorLocation() - GetActorLocation()).GetSafeNormal();
+
+			}
+			SetActorLocation(GetActorLocation() + moveDirection * moveSpeed * DeltaTime);
+			SetActorRotation(GetActorRotation() + WhiteRot);
+			moveDirection1 = GetActorForwardVector();
+		}
+		else
+		{
+			SetActorLocation(GetActorLocation() + moveDirection * moveSpeed * DeltaTime);
+			SetActorRotation(GetActorRotation() + WhiteRot);
+		}
+}
+	else {
+		SetActorRotation(GetActorRotation() + WhiteRot);
+	}
 }
 

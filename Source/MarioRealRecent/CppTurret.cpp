@@ -10,6 +10,8 @@
 #include "Koopa_ball.h"
 #include <Koopa_Violethat.h>
 #include <Koopa_WhiteHat.h>
+#include "Koopa_FirstVioletHat.h"
+#include "Koopa_SecondVioletHat.h"
 
 #define OUT
 
@@ -81,16 +83,6 @@ void ACppTurret::BeginPlay()
 	Super::BeginPlay();
 	GetWorldTimerManager().SetTimer(ChangeTargetTimerhandle, this, &ACppTurret::ChangeBeamTarget, ChangeTargetDelay, true, 1.f);	
 	GetWorldTimerManager().SetTimer(TraceTimerhandle, this, &ACppTurret::TraceBeam, .1f, true, .1f);
-
-	//GetWorld()->SpawnActor<AKoopa_Violethat>(violet_bp, violet1->GetComponentLocation(), violet1->GetComponentRotation());
-	//GetWorld()->SpawnActor<AKoopa_Violethat>(violet_bp, violet2->GetComponentLocation(), violet2->GetComponentRotation());
-	//GetWorld()->SpawnActor<AKoopa_WhiteHat>(white_bp, white->GetComponentLocation(), white->GetComponentRotation());
-	//GetWorld()->SpawnActor<AKoopa_Violethat>(violet_bp, violet3->GetComponentLocation(), violet3->GetComponentRotation());
-	//GetWorld()->SpawnActor<AKoopa_Violethat>(violet_bp, violet4->GetComponentLocation(), violet4->GetComponentRotation());
-	//GetWorld()->SpawnActor<AKoopa_Violethat>(violet_bp, violet5->GetComponentLocation(), violet5->GetComponentRotation());
-	//GetWorld()->SpawnActor<AKoopa_Violethat>(violet_bp, violet6->GetComponentLocation(), violet6->GetComponentRotation());
-	//GetWorld()->SpawnActor<AKoopa_Violethat>(violet_bp, violet7->GetComponentLocation(), violet7->GetComponentRotation());
-	//GetWorld()->SpawnActor<AKoopa_Violethat>(violet_bp, violet8->GetComponentLocation(), violet8->GetComponentRotation());
 	
 	//TurretMesh->PlayAnimation(Anims[0], false);
 }
@@ -126,18 +118,18 @@ void ACppTurret::Tick(float DeltaTime)
 			}
 		}
 	}
-	if ( anyTime>62&& anyTime < 73) {
+	if ( anyTime>10&& anyTime < 73) {
 		UpdateLookAtTarget(DeltaTime);
 		if (currentTime > delayTime) {
-		GetWorld()->SpawnActor<AKoopa_Violethat>(violet_bp, violet1->GetComponentLocation(), violet1->GetComponentRotation());
+		GetWorld()->SpawnActor<AKoopa_FirstVioletHat>(violet_bp1, violet1->GetComponentLocation(), violet1->GetComponentRotation());
 		GetWorld()->SpawnActor<AKoopa_Violethat>(violet_bp, violet2->GetComponentLocation(), violet2->GetComponentRotation());
 		GetWorld()->SpawnActor<AKoopa_WhiteHat>(white_bp, white->GetComponentLocation(), white->GetComponentRotation());
 		GetWorld()->SpawnActor<AKoopa_Violethat>(violet_bp, violet3->GetComponentLocation(), violet3->GetComponentRotation());
 		GetWorld()->SpawnActor<AKoopa_Violethat>(violet_bp, violet4->GetComponentLocation(), violet4->GetComponentRotation());
-		GetWorld()->SpawnActor<AKoopa_Violethat>(violet_bp, violet5->GetComponentLocation(), violet5->GetComponentRotation());
-		GetWorld()->SpawnActor<AKoopa_Violethat>(violet_bp, violet6->GetComponentLocation(), violet6->GetComponentRotation());
+		GetWorld()->SpawnActor<AKoopa_SecondVioletHat>(violet_bp2, violet5->GetComponentLocation(), violet5->GetComponentRotation());
+		GetWorld()->SpawnActor<AKoopa_FirstVioletHat>(violet_bp1, violet6->GetComponentLocation(), violet6->GetComponentRotation());
 		GetWorld()->SpawnActor<AKoopa_Violethat>(violet_bp, violet7->GetComponentLocation(), violet7->GetComponentRotation());
-		GetWorld()->SpawnActor<AKoopa_Violethat>(violet_bp, violet8->GetComponentLocation(), violet8->GetComponentRotation());
+		GetWorld()->SpawnActor<AKoopa_SecondVioletHat>(violet_bp2, violet8->GetComponentLocation(), violet8->GetComponentRotation());
 		currentTime = 0;
 		}
 	}
