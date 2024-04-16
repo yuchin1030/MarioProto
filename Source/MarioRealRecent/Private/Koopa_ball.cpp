@@ -14,6 +14,7 @@ AKoopa_ball::AKoopa_ball()
 	boxComp->SetBoxExtent(FVector(50));
 
 	meshComp = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Static Mesh Component"));
+	meshComp->SetupAttachment(boxComp);
 	meshComp->SetRelativeLocation(FVector(0, 0, -50));
 }
 

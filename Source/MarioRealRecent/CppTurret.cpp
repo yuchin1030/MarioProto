@@ -126,7 +126,7 @@ void ACppTurret::Tick(float DeltaTime)
 			}
 		}
 	}
-	if ( anyTime>70) {
+	if ( anyTime>62&& anyTime < 73) {
 		UpdateLookAtTarget(DeltaTime);
 		if (currentTime > delayTime) {
 		GetWorld()->SpawnActor<AKoopa_Violethat>(violet_bp, violet1->GetComponentLocation(), violet1->GetComponentRotation());
