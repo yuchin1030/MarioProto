@@ -23,7 +23,7 @@ void AKoopa_ball::BeginPlay()
 {
 	Super::BeginPlay();
 	moveDirection = GetActorForwardVector();
-	SetLifeSpan(5.0f);
+	SetLifeSpan(10.0f);
 }
 
 // Called every frame

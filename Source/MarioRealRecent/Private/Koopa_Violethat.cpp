@@ -4,8 +4,6 @@
 #include "Koopa_Violethat.h"
 #include <../../../../../../../Source/Runtime/Engine/Classes/Components/BoxComponent.h>
 #include <../../../../../../../Source/Runtime/Engine/Classes/Components/StaticMeshComponent.h>
-#include "../MarioRealRecentCharacter.h"
-#include "EngineUtils.h"
 
 // Sets default values
 AKoopa_Violethat::AKoopa_Violethat()
@@ -33,27 +31,7 @@ void AKoopa_Violethat::BeginPlay()
 void AKoopa_Violethat::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-	VioDel=VioDel+DeltaTime;
-	if(VioDel>4){
-		if (VioDel > 5 && VioDel < 5.5f) {
-			for (TActorIterator<AMarioRealRecentCharacter> player(GetWorld()); player; ++player)
-			{
-				// 자신이 플레이어를 바라보는 방향을 moveDirection으로 설정한다.
-				moveDirection = (player->GetActorLocation() - GetActorLocation()).GetSafeNormal();
-
-			}
-			SetActorLocation(GetActorLocation() + moveDirection * moveSpeed * DeltaTime);
-			SetActorRotation(GetActorRotation() + WhiteRot);
-			moveDirection1 = GetActorForwardVector();
-		}
-		else
-		{
-			SetActorLocation(GetActorLocation() + moveDirection * moveSpeed * DeltaTime);
-			SetActorRotation(GetActorRotation() + WhiteRot);
-		}
-		}
-	else {
-		SetActorRotation(GetActorRotation() + WhiteRot);
-	}
+	SetActorRotation(GetActorRotation() + VioRot);
+	SetActorLocation(GetActorLocation() + moveDirection * moveSpeed * DeltaTime);
 }
 

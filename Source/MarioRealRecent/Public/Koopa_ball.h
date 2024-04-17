@@ -26,7 +26,7 @@ public:
 	UPROPERTY(VisibleAnywhere, Category="MySettings|Components")
 	class UBoxComponent* boxComp;
 
-	UPROPERTY(VisibleAnywhere, Category="MySettings|Components",BlueprintReadWrite)
+	UPROPERTY(VisibleAnywhere, Category="MySettings|Components")
 	class UStaticMeshComponent* meshComp;
 
 	UPROPERTY(EditAnywhere, Category="MySettings|Variables")

@@ -10,9 +10,6 @@
 #include "Koopa_ball.h"
 #include <Koopa_Violethat.h>
 #include <Koopa_WhiteHat.h>
-#include "Koopa_FirstVioletHat.h"
-#include "Koopa_SecondVioletHat.h"
-#include <../../../../../../../Source/Runtime/Engine/Public/EngineUtils.h>
 
 #define OUT
 
@@ -84,6 +81,16 @@ void ACppTurret::BeginPlay()
 	Super::BeginPlay();
 	GetWorldTimerManager().SetTimer(ChangeTargetTimerhandle, this, &ACppTurret::ChangeBeamTarget, ChangeTargetDelay, true, 1.f);	
 	GetWorldTimerManager().SetTimer(TraceTimerhandle, this, &ACppTurret::TraceBeam, .1f, true, .1f);
+
+	//GetWorld()->SpawnActor<AKoopa_Violethat>(violet_bp, violet1->GetComponentLocation(), violet1->GetComponentRotation());
+	//GetWorld()->SpawnActor<AKoopa_Violethat>(violet_bp, violet2->GetComponentLocation(), violet2->GetComponentRotation());
+	//GetWorld()->SpawnActor<AKoopa_WhiteHat>(white_bp, white->GetComponentLocation(), white->GetComponentRotation());
+	//GetWorld()->SpawnActor<AKoopa_Violethat>(violet_bp, violet3->GetComponentLocation(), violet3->GetComponentRotation());
+	//GetWorld()->SpawnActor<AKoopa_Violethat>(violet_bp, violet4->GetComponentLocation(), violet4->GetComponentRotation());
+	//GetWorld()->SpawnActor<AKoopa_Violethat>(violet_bp, violet5->GetComponentLocation(), violet5->GetComponentRotation());
+	//GetWorld()->SpawnActor<AKoopa_Violethat>(violet_bp, violet6->GetComponentLocation(), violet6->GetComponentRotation());
+	//GetWorld()->SpawnActor<AKoopa_Violethat>(violet_bp, violet7->GetComponentLocation(), violet7->GetComponentRotation());
+	//GetWorld()->SpawnActor<AKoopa_Violethat>(violet_bp, violet8->GetComponentLocation(), violet8->GetComponentRotation());
 	
 	//TurretMesh->PlayAnimation(Anims[0], false);
 }
@@ -102,7 +109,6 @@ void ACppTurret::Tick(float DeltaTime)
 			if (currentTime > BalldelayTime) {
 			UE_LOG(LogTemp,Warning,TEXT("hi"));
 			//쿠파 폭탄 날리기
-		
 			GetWorld()->SpawnActor<AKoopa_ball>(enemy_bp, spawnArrow->GetComponentLocation(), spawnArrow->GetComponentRotation());
 
 			currentTime = 0;
@@ -113,7 +119,6 @@ void ACppTurret::Tick(float DeltaTime)
 			if (currentTime > BalldelayTime) {
 			//	UE_LOG(LogTemp, Warning, TEXT("hiiiiiiiiiiiiiiiiiiii"));
 			//쿠파 폭탄 날리기
-				
 			GetWorld()->SpawnActor<AKoopa_ball>(enemy_bp, spawnArrow->GetComponentLocation(), spawnArrow->GetComponentRotation());
 			//GetWorld()->SpawnActor<AKoopa_Violethat>(violet_bp, violet1->GetComponentLocation(), violet1->GetComponentRotation());
 			
@@ -121,18 +126,18 @@ void ACppTurret::Tick(float DeltaTime)
 			}
 		}
 	}
-	if ( anyTime>10&& anyTime < 73) {
+	if ( anyTime>62&& anyTime < 73) {
 		UpdateLookAtTarget(DeltaTime);
 		if (currentTime > delayTime) {
-		GetWorld()->SpawnActor<AKoopa_FirstVioletHat>(violet_bp1, violet1->GetComponentLocation(), violet1->GetComponentRotation());
+		GetWorld()->SpawnActor<AKoopa_Violethat>(violet_bp, violet1->GetComponentLocation(), violet1->GetComponentRotation());
 		GetWorld()->SpawnActor<AKoopa_Violethat>(violet_bp, violet2->GetComponentLocation(), violet2->GetComponentRotation());
 		GetWorld()->SpawnActor<AKoopa_WhiteHat>(white_bp, white->GetComponentLocation(), white->GetComponentRotation());
 		GetWorld()->SpawnActor<AKoopa_Violethat>(violet_bp, violet3->GetComponentLocation(), violet3->GetComponentRotation());
 		GetWorld()->SpawnActor<AKoopa_Violethat>(violet_bp, violet4->GetComponentLocation(), violet4->GetComponentRotation());
-		GetWorld()->SpawnActor<AKoopa_SecondVioletHat>(violet_bp2, violet5->GetComponentLocation(), violet5->GetComponentRotation());
-		GetWorld()->SpawnActor<AKoopa_FirstVioletHat>(violet_bp1, violet6->GetComponentLocation(), violet6->GetComponentRotation());
+		GetWorld()->SpawnActor<AKoopa_Violethat>(violet_bp, violet5->GetComponentLocation(), violet5->GetComponentRotation());
+		GetWorld()->SpawnActor<AKoopa_Violethat>(violet_bp, violet6->GetComponentLocation(), violet6->GetComponentRotation());
 		GetWorld()->SpawnActor<AKoopa_Violethat>(violet_bp, violet7->GetComponentLocation(), violet7->GetComponentRotation());
-		GetWorld()->SpawnActor<AKoopa_SecondVioletHat>(violet_bp2, violet8->GetComponentLocation(), violet8->GetComponentRotation());
+		GetWorld()->SpawnActor<AKoopa_Violethat>(violet_bp, violet8->GetComponentLocation(), violet8->GetComponentRotation());
 		currentTime = 0;
 		}
 	}
@@ -165,21 +170,15 @@ void ACppTurret::ChangeBeamTarget()
 	TimerCount++;
 	
 //	if (ChangeNumber < 10) {
-		//if (TimerCount % 2 == 0) {
-			for (TActorIterator<AMarioRealRecentCharacter> player(GetWorld()); player; ++player)
-			{
-				// 자신이 플레이어를 바라보는 방향을 moveDirection으로 설정한다.
-				moveDirection = (player->GetActorLocation() - GetActorLocation()).GetSafeNormal();
-				FollowTarget->SetWorldLocation(player->GetActorLocation());
-
-			}			
+		if (TimerCount % 2 == 0) {
+			FollowTarget->SetWorldLocation(Target1->GetComponentLocation());
 			ChangeNumber++;
 		
-	//	}
-// 		else {
-// 			FollowTarget->SetWorldLocation(Target2->GetComponentLocation());
-// 			ChangeNumber++;
-// 		}
+		}
+		else {
+			FollowTarget->SetWorldLocation(Target2->GetComponentLocation());
+			ChangeNumber++;
+		}
 //	}
 	//else {
 	//	Beam1->SetHiddenInGame(false);

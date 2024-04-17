@@ -6,6 +6,7 @@
 #include <../../../../../../../Source/Runtime/Engine/Classes/Components/StaticMeshComponent.h>
 #include <MarioRealRecent/MarioRealRecentCharacter.h>
 #include "EngineUtils.h"
+#include "Components/ArrowComponent.h"
 
 // Sets default values
 AKoopa_WhiteHat::AKoopa_WhiteHat()
@@ -17,6 +18,12 @@ AKoopa_WhiteHat::AKoopa_WhiteHat()
 
 	meshComp = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Static Mesh Component"));
 	meshComp->SetupAttachment(boxComp);
+
+	arrow = CreateDefaultSubobject<UArrowComponent>(TEXT("Arrow Component"));
+	arrow->SetupAttachment(boxComp);
+	arrow->SetRelativeLocation(FVector(0, 60, 0));
+	arrow->SetRelativeRotation(FRotator(0, 90, 0));
+
 }
 
 // Called when the game starts or when spawned
@@ -39,27 +46,23 @@ void AKoopa_WhiteHat::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	VioDel = VioDel + DeltaTime;
-	if (VioDel > 4) {
-		if (VioDel > 5 && VioDel < 5.5f) {
-			for (TActorIterator<AMarioRealRecentCharacter> player(GetWorld()); player; ++player)
-			{
-				// 자신이 플레이어를 바라보는 방향을 moveDirection으로 설정한다.
-				moveDirection = (player->GetActorLocation() - GetActorLocation()).GetSafeNormal();
+	if (bStopLocWhiteHat)
+	{
+		SetActorLocation(GetActorLocation() + moveDirection * moveSpeed * DeltaTime);
+	}
 
-			}
-			SetActorLocation(GetActorLocation() + moveDirection * moveSpeed * DeltaTime);
-			SetActorRotation(GetActorRotation() + WhiteRot);
-			moveDirection1 = GetActorForwardVector();
-		}
-		else
-		{
-			SetActorLocation(GetActorLocation() + moveDirection * moveSpeed * DeltaTime);
-			SetActorRotation(GetActorRotation() + WhiteRot);
-		}
-}
-	else {
+	if (bStopRotWhiteHat)
+	{
 		SetActorRotation(GetActorRotation() + WhiteRot);
+	}
+
+	
+	UE_LOG(LogTemp, Warning, TEXT("hi"));
+	for (TActorIterator<AMarioRealRecentCharacter> player(GetWorld()); player; ++player)
+	{
+		// 자신이 플레이어를 바라보는 방향을 moveDirection으로 설정한다.
+		dir = (player->GetActorLocation().GetSafeNormal());
+
 	}
 }
 
