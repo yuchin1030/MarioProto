@@ -148,6 +148,9 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	bool isSpin = false;
 
+	UPROPERTY(EditAnywhere,BlueprintReadWrite)
+	FVector moveDirection;
+
 
 protected:
 	// Called when the game starts or when spawned

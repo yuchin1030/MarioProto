@@ -12,6 +12,7 @@
 #include <Koopa_WhiteHat.h>
 #include "Koopa_FirstVioletHat.h"
 #include "Koopa_SecondVioletHat.h"
+#include <../../../../../../../Source/Runtime/Engine/Public/EngineUtils.h>
 
 #define OUT
 
@@ -101,6 +102,7 @@ void ACppTurret::Tick(float DeltaTime)
 			if (currentTime > BalldelayTime) {
 			UE_LOG(LogTemp,Warning,TEXT("hi"));
 			//쿠파 폭탄 날리기
+		
 			GetWorld()->SpawnActor<AKoopa_ball>(enemy_bp, spawnArrow->GetComponentLocation(), spawnArrow->GetComponentRotation());
 
 			currentTime = 0;
@@ -111,6 +113,7 @@ void ACppTurret::Tick(float DeltaTime)
 			if (currentTime > BalldelayTime) {
 			//	UE_LOG(LogTemp, Warning, TEXT("hiiiiiiiiiiiiiiiiiiii"));
 			//쿠파 폭탄 날리기
+				
 			GetWorld()->SpawnActor<AKoopa_ball>(enemy_bp, spawnArrow->GetComponentLocation(), spawnArrow->GetComponentRotation());
 			//GetWorld()->SpawnActor<AKoopa_Violethat>(violet_bp, violet1->GetComponentLocation(), violet1->GetComponentRotation());
 			
@@ -162,15 +165,21 @@ void ACppTurret::ChangeBeamTarget()
 	TimerCount++;
 	
 //	if (ChangeNumber < 10) {
-		if (TimerCount % 2 == 0) {
-			FollowTarget->SetWorldLocation(Target1->GetComponentLocation());
+		//if (TimerCount % 2 == 0) {
+			for (TActorIterator<AMarioRealRecentCharacter> player(GetWorld()); player; ++player)
+			{
+				// 자신이 플레이어를 바라보는 방향을 moveDirection으로 설정한다.
+				moveDirection = (player->GetActorLocation() - GetActorLocation()).GetSafeNormal();
+				FollowTarget->SetWorldLocation(player->GetActorLocation());
+
+			}			
 			ChangeNumber++;
 		
-		}
-		else {
-			FollowTarget->SetWorldLocation(Target2->GetComponentLocation());
-			ChangeNumber++;
-		}
+	//	}
+// 		else {
+// 			FollowTarget->SetWorldLocation(Target2->GetComponentLocation());
+// 			ChangeNumber++;
+// 		}
 //	}
 	//else {
 	//	Beam1->SetHiddenInGame(false);
