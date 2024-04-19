@@ -22,35 +22,31 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category="MySettings|Components")
+	UPROPERTY(VisibleAnywhere, Category="MySettings|Components")
 	class UBoxComponent* boxComp;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category ="MySettings|Components")
+	UPROPERTY(VisibleAnywhere, Category="MySettings|Components")
 	class UStaticMeshComponent* meshComp;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category ="MySettings|Components")
-	class UArrowComponent* arrow;
-
 	UPROPERTY(EditAnywhere, Category="MySettings|Variables")
 	int32 traceRate = 50;
 
 	UPROPERTY(EditAnywhere, Category="MySettings|Variables")
-	float moveSpeed = 180;
+	float moveSpeed = 650;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "MySettings|Variables")
-	bool bStopRotWhiteHat = true;
+	UPROPERTY(EditAnywhere, Category="MySettings|Variables")
+	float VioDel = 0;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "MySettings|Variables")
-	bool bStopLocWhiteHat = true;
+	UPROPERTY(EditAnywhere,BlueprintReadWrite, Category="MySettings|Variables")
+	bool bStopRotWhiteHat=true;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "MySettings|Variables")
-	FVector dir;
+	UPROPERTY(EditAnywhere,BlueprintReadWrite, Category="MySettings|Variables")
+	bool bStopLocWhiteHat=true;
 
 private:
 	FVector moveDirection;
 
-	FRotator WhiteRot= FRotator(0,10,0);
+	FVector moveDirection1;
 
-	
+	FRotator WhiteRot= FRotator(0,15,0);
 
 };

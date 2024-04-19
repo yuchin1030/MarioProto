@@ -64,6 +64,12 @@ private:
 	TSubclassOf<class AKoopa_WhiteHat> white_bp;
 
 	UPROPERTY(EditAnywhere)
+	TSubclassOf<class AKoopa_FirstVioletHat> violet_bp1;
+
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<class AKoopa_SecondVioletHat> violet_bp2;
+
+	UPROPERTY(EditAnywhere)
 	UStaticMeshComponent* Beam1;
 
 	UPROPERTY(VisibleAnywhere)
@@ -142,6 +148,9 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	bool isSpin = false;
 
+	UPROPERTY(EditAnywhere,BlueprintReadWrite)
+	FVector moveDirection;
+
 
 protected:
 	// Called when the game starts or when spawned
@@ -153,6 +162,7 @@ public:
 
 
 private:
+
 	
 
 };
