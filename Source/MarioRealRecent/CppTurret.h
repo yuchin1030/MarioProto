@@ -57,6 +57,10 @@ private:
 	UPROPERTY(EditAnywhere)
 	TSubclassOf<class AKoopa_ball> enemy_bp;
 
+
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<class AKoopa_ball> enemyFire_bp;
+
 	UPROPERTY(EditAnywhere)
 	TSubclassOf<class AKoopa_Violethat> violet_bp;
 
@@ -101,6 +105,7 @@ private:
 
 	UPROPERTY(EditAnywhere)
 	int32 ChangeNumber=0;
+
 
 	UPROPERTY(EditAnywhere)
 	float RotationRateMultiplier=1.f;
@@ -150,6 +155,10 @@ public:
 
 	UPROPERTY(EditAnywhere,BlueprintReadWrite)
 	FVector moveDirection;
+
+
+	UPROPERTY(EditAnywhere)
+	bool bFireBall = false;
 
 
 protected:

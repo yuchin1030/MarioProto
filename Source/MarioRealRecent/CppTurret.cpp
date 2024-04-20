@@ -92,51 +92,55 @@ void ACppTurret::BeginPlay()
 void ACppTurret::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-	UE_LOG(LogTemp, Warning, TEXT("%f"),anyTime);
+	UE_LOG(LogTemp, Warning, TEXT("%f"), anyTime);
 	currentTime += DeltaTime;
 	anyTime += DeltaTime;
-	if (anyTime < 20) {
-	//if(currentTime<120&&currentTime>60){
-		if (Enemy) {
-			FollowEnemy(DeltaTime);
+	if (anyTime < 27 && anyTime>17) {
+		if (!bFireBall) {
+			UpdateLookAtTarget(DeltaTime);
 			if (currentTime > BalldelayTime) {
-			UE_LOG(LogTemp,Warning,TEXT("hi"));
-			//ÄíÆÄ ÆøÅº ³¯¸®±â
-		
-			GetWorld()->SpawnActor<AKoopa_ball>(enemy_bp, spawnArrow->GetComponentLocation(), spawnArrow->GetComponentRotation());
+				//ÄíÆÄ ÆøÅº ³¯¸®±â
 
-			currentTime = 0;
+				GetWorld()->SpawnActor<AKoopa_ball>(enemy_bp, spawnArrow->GetComponentLocation(), spawnArrow->GetComponentRotation());
+
+
+				currentTime = 0;
+				bFireBall = true;
 			}
 		}
 		else {
 			UpdateLookAtTarget(DeltaTime);
 			if (currentTime > BalldelayTime) {
-			//	UE_LOG(LogTemp, Warning, TEXT("hiiiiiiiiiiiiiiiiiiii"));
-			//ÄíÆÄ ÆøÅº ³¯¸®±â
-				
-			GetWorld()->SpawnActor<AKoopa_ball>(enemy_bp, spawnArrow->GetComponentLocation(), spawnArrow->GetComponentRotation());
-			//GetWorld()->SpawnActor<AKoopa_Violethat>(violet_bp, violet1->GetComponentLocation(), violet1->GetComponentRotation());
-			
-			currentTime = 0;
+				//ÄíÆÄ ÆøÅº ³¯¸®±â
+
+				GetWorld()->SpawnActor<AKoopa_ball>(enemyFire_bp, spawnArrow->GetComponentLocation(), spawnArrow->GetComponentRotation());
+
+
+				currentTime = 0;
 			}
 		}
-	}
-	if ( anyTime>10&& anyTime < 73) {
-		UpdateLookAtTarget(DeltaTime);
-		if (currentTime > delayTime) {
-		GetWorld()->SpawnActor<AKoopa_FirstVioletHat>(violet_bp1, violet1->GetComponentLocation(), violet1->GetComponentRotation());
-		GetWorld()->SpawnActor<AKoopa_Violethat>(violet_bp, violet2->GetComponentLocation(), violet2->GetComponentRotation());
-		GetWorld()->SpawnActor<AKoopa_WhiteHat>(white_bp, white->GetComponentLocation(), white->GetComponentRotation());
-		GetWorld()->SpawnActor<AKoopa_Violethat>(violet_bp, violet3->GetComponentLocation(), violet3->GetComponentRotation());
-		GetWorld()->SpawnActor<AKoopa_Violethat>(violet_bp, violet4->GetComponentLocation(), violet4->GetComponentRotation());
-		GetWorld()->SpawnActor<AKoopa_SecondVioletHat>(violet_bp2, violet5->GetComponentLocation(), violet5->GetComponentRotation());
-		GetWorld()->SpawnActor<AKoopa_FirstVioletHat>(violet_bp1, violet6->GetComponentLocation(), violet6->GetComponentRotation());
-		GetWorld()->SpawnActor<AKoopa_Violethat>(violet_bp, violet7->GetComponentLocation(), violet7->GetComponentRotation());
-		GetWorld()->SpawnActor<AKoopa_SecondVioletHat>(violet_bp2, violet8->GetComponentLocation(), violet8->GetComponentRotation());
-		currentTime = 0;
 		}
+
+		else if (anyTime > 46 && anyTime < 76) {
+			UpdateLookAtTarget(DeltaTime);
+			if (currentTime > delayTime) {
+				GetWorld()->SpawnActor<AKoopa_FirstVioletHat>(violet_bp1, violet1->GetComponentLocation(), violet1->GetComponentRotation());
+				GetWorld()->SpawnActor<AKoopa_Violethat>(violet_bp, violet2->GetComponentLocation(), violet2->GetComponentRotation());
+				GetWorld()->SpawnActor<AKoopa_WhiteHat>(white_bp, white->GetComponentLocation(), white->GetComponentRotation());
+				GetWorld()->SpawnActor<AKoopa_Violethat>(violet_bp, violet3->GetComponentLocation(), violet3->GetComponentRotation());
+				GetWorld()->SpawnActor<AKoopa_Violethat>(violet_bp, violet4->GetComponentLocation(), violet4->GetComponentRotation());
+				GetWorld()->SpawnActor<AKoopa_SecondVioletHat>(violet_bp2, violet5->GetComponentLocation(), violet5->GetComponentRotation());
+				GetWorld()->SpawnActor<AKoopa_FirstVioletHat>(violet_bp1, violet6->GetComponentLocation(), violet6->GetComponentRotation());
+				GetWorld()->SpawnActor<AKoopa_Violethat>(violet_bp, violet7->GetComponentLocation(), violet7->GetComponentRotation());
+				GetWorld()->SpawnActor<AKoopa_SecondVioletHat>(violet_bp2, violet8->GetComponentLocation(), violet8->GetComponentRotation());
+				currentTime = 0;
+			}
+		}
+		else if (anyTime > 76)
+	{
+		anyTime=0;
 	}
-}
+	}
 	//TraceBeam();
 
 //}
