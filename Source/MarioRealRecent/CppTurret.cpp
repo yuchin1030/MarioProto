@@ -92,10 +92,15 @@ void ACppTurret::BeginPlay()
 void ACppTurret::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+<<<<<<< Updated upstream
+=======
+	
+	UpdateLookAtTarget(DeltaTime);
+>>>>>>> Stashed changes
 	UE_LOG(LogTemp, Warning, TEXT("%f"), anyTime);
 	currentTime += DeltaTime;
 	anyTime += DeltaTime;
-	if (anyTime < 27 && anyTime>17) {
+	if (anyTime < 27 && anyTime>15) {
 		if (!bFireBall) {
 			UpdateLookAtTarget(DeltaTime);
 			if (currentTime > BalldelayTime) {
@@ -121,6 +126,7 @@ void ACppTurret::Tick(float DeltaTime)
 		}
 		}
 
+<<<<<<< Updated upstream
 		else if (anyTime > 46 && anyTime < 76) {
 			UpdateLookAtTarget(DeltaTime);
 			if (currentTime > delayTime) {
@@ -135,10 +141,36 @@ void ACppTurret::Tick(float DeltaTime)
 				GetWorld()->SpawnActor<AKoopa_SecondVioletHat>(violet_bp2, violet8->GetComponentLocation(), violet8->GetComponentRotation());
 				currentTime = 0;
 			}
+=======
+	else if (anyTime > 44 && anyTime < 74) {
+		if (bIsWearingHat) {
+			anyTime=0;
+			TimeLineTime++;
+	}
+	else{
+		UpdateLookAtTarget(DeltaTime);
+		if (currentTime > delayTime) {
+			bFireBall = true;
+			GetWorld()->SpawnActor<AKoopa_FirstVioletHat>(violet_bp1, violet1->GetComponentLocation(), violet1->GetComponentRotation());
+			GetWorld()->SpawnActor<AKoopa_Violethat>(violet_bp, violet2->GetComponentLocation(), violet2->GetComponentRotation());
+			GetWorld()->SpawnActor<AKoopa_WhiteHat>(white_bp, white->GetComponentLocation(), white->GetComponentRotation());
+			GetWorld()->SpawnActor<AKoopa_Violethat>(violet_bp, violet3->GetComponentLocation(), violet3->GetComponentRotation());
+			GetWorld()->SpawnActor<AKoopa_Violethat>(violet_bp, violet4->GetComponentLocation(), violet4->GetComponentRotation());
+			GetWorld()->SpawnActor<AKoopa_SecondVioletHat>(violet_bp2, violet5->GetComponentLocation(), violet5->GetComponentRotation());
+			GetWorld()->SpawnActor<AKoopa_FirstVioletHat>(violet_bp1, violet6->GetComponentLocation(), violet6->GetComponentRotation());
+			GetWorld()->SpawnActor<AKoopa_Violethat>(violet_bp, violet7->GetComponentLocation(), violet7->GetComponentRotation());
+			GetWorld()->SpawnActor<AKoopa_SecondVioletHat>(violet_bp2, violet8->GetComponentLocation(), violet8->GetComponentRotation());
+			currentTime = 0;
+>>>>>>> Stashed changes
 		}
 		else if (anyTime > 76)
 	{
+<<<<<<< Updated upstream
 		anyTime=0;
+=======
+		anyTime = 0;
+		TimeLineTime++;
+>>>>>>> Stashed changes
 	}
 	}
 	//TraceBeam();

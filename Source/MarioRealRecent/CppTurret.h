@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "Engine/EngineTypes.h"
+#include <../../../../../../../Source/Runtime/Engine/Classes/Camera/CameraShakeBase.h>
 #include "CppTurret.generated.h"
 
 UCLASS()
@@ -151,13 +152,16 @@ public:
 	float anyTime = 0.0f;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int32 TimeLineTime = 0;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	bool isSpin = false;
 
 	UPROPERTY(EditAnywhere,BlueprintReadWrite)
 	FVector moveDirection;
 
 
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	bool bFireBall = false;
 
 
@@ -169,9 +173,7 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-
 private:
-
 	
 
 };
