@@ -51,13 +51,12 @@ private:
 	float delayTime = 10.0f;
 
 	UPROPERTY(EditAnywhere)
-	float BalldelayTime = 1.0f;
+	float BalldelayTime = 2.0f;
 
 
 
 	UPROPERTY(EditAnywhere)
 	TSubclassOf<class AKoopa_ball> enemy_bp;
-
 
 	UPROPERTY(EditAnywhere)
 	TSubclassOf<class AKoopa_ball> enemyFire_bp;
@@ -163,6 +162,9 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	bool bFireBall = false;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	bool bIsWearingHat = false;
 
 
 protected:

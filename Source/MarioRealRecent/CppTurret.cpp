@@ -20,9 +20,9 @@
 // Sets default values
 ACppTurret::ACppTurret()
 {
- 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
-	
+
 	Root = CreateDefaultSubobject<USceneComponent>(TEXT("Root"));
 	SetRootComponent(Root);
 
@@ -82,9 +82,9 @@ ACppTurret::ACppTurret()
 void ACppTurret::BeginPlay()
 {
 	Super::BeginPlay();
-	GetWorldTimerManager().SetTimer(ChangeTargetTimerhandle, this, &ACppTurret::ChangeBeamTarget, ChangeTargetDelay, true, 1.f);	
+	GetWorldTimerManager().SetTimer(ChangeTargetTimerhandle, this, &ACppTurret::ChangeBeamTarget, ChangeTargetDelay, true, 1.f);
 	GetWorldTimerManager().SetTimer(TraceTimerhandle, this, &ACppTurret::TraceBeam, .1f, true, .1f);
-	
+
 	//TurretMesh->PlayAnimation(Anims[0], false);
 }
 
@@ -92,11 +92,8 @@ void ACppTurret::BeginPlay()
 void ACppTurret::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-<<<<<<< Updated upstream
-=======
 	
 	UpdateLookAtTarget(DeltaTime);
->>>>>>> Stashed changes
 	UE_LOG(LogTemp, Warning, TEXT("%f"), anyTime);
 	currentTime += DeltaTime;
 	anyTime += DeltaTime;
@@ -110,7 +107,6 @@ void ACppTurret::Tick(float DeltaTime)
 
 
 				currentTime = 0;
-				bFireBall = true;
 			}
 		}
 		else {
@@ -124,24 +120,8 @@ void ACppTurret::Tick(float DeltaTime)
 				currentTime = 0;
 			}
 		}
-		}
+	}
 
-<<<<<<< Updated upstream
-		else if (anyTime > 46 && anyTime < 76) {
-			UpdateLookAtTarget(DeltaTime);
-			if (currentTime > delayTime) {
-				GetWorld()->SpawnActor<AKoopa_FirstVioletHat>(violet_bp1, violet1->GetComponentLocation(), violet1->GetComponentRotation());
-				GetWorld()->SpawnActor<AKoopa_Violethat>(violet_bp, violet2->GetComponentLocation(), violet2->GetComponentRotation());
-				GetWorld()->SpawnActor<AKoopa_WhiteHat>(white_bp, white->GetComponentLocation(), white->GetComponentRotation());
-				GetWorld()->SpawnActor<AKoopa_Violethat>(violet_bp, violet3->GetComponentLocation(), violet3->GetComponentRotation());
-				GetWorld()->SpawnActor<AKoopa_Violethat>(violet_bp, violet4->GetComponentLocation(), violet4->GetComponentRotation());
-				GetWorld()->SpawnActor<AKoopa_SecondVioletHat>(violet_bp2, violet5->GetComponentLocation(), violet5->GetComponentRotation());
-				GetWorld()->SpawnActor<AKoopa_FirstVioletHat>(violet_bp1, violet6->GetComponentLocation(), violet6->GetComponentRotation());
-				GetWorld()->SpawnActor<AKoopa_Violethat>(violet_bp, violet7->GetComponentLocation(), violet7->GetComponentRotation());
-				GetWorld()->SpawnActor<AKoopa_SecondVioletHat>(violet_bp2, violet8->GetComponentLocation(), violet8->GetComponentRotation());
-				currentTime = 0;
-			}
-=======
 	else if (anyTime > 44 && anyTime < 74) {
 		if (bIsWearingHat) {
 			anyTime=0;
@@ -161,19 +141,16 @@ void ACppTurret::Tick(float DeltaTime)
 			GetWorld()->SpawnActor<AKoopa_Violethat>(violet_bp, violet7->GetComponentLocation(), violet7->GetComponentRotation());
 			GetWorld()->SpawnActor<AKoopa_SecondVioletHat>(violet_bp2, violet8->GetComponentLocation(), violet8->GetComponentRotation());
 			currentTime = 0;
->>>>>>> Stashed changes
 		}
-		else if (anyTime > 76)
+		}
+	}
+	else if (anyTime > 75)
 	{
-<<<<<<< Updated upstream
-		anyTime=0;
-=======
 		anyTime = 0;
 		TimeLineTime++;
->>>>>>> Stashed changes
 	}
-	}
-	//TraceBeam();
+}
+//TraceBeam();
 
 //}
 //타겟 쫓아가게 만들기
@@ -199,18 +176,18 @@ void ACppTurret::UpdateLookAtTarget(float DeltaTime)
 void ACppTurret::ChangeBeamTarget()
 {
 	TimerCount++;
-	
-//	if (ChangeNumber < 10) {
-		//if (TimerCount % 2 == 0) {
-			for (TActorIterator<AMarioRealRecentCharacter> player(GetWorld()); player; ++player)
-			{
-				// 자신이 플레이어를 바라보는 방향을 moveDirection으로 설정한다.
-				moveDirection = (player->GetActorLocation() - GetActorLocation()).GetSafeNormal();
-				FollowTarget->SetWorldLocation(player->GetActorLocation());
 
-			}			
-			ChangeNumber++;
-		
+	//	if (ChangeNumber < 10) {
+			//if (TimerCount % 2 == 0) {
+	for (TActorIterator<AMarioRealRecentCharacter> player(GetWorld()); player; ++player)
+	{
+		// 자신이 플레이어를 바라보는 방향을 moveDirection으로 설정한다.
+		moveDirection = (player->GetActorLocation() - GetActorLocation()).GetSafeNormal();
+		FollowTarget->SetWorldLocation(player->GetActorLocation());
+
+	}
+	ChangeNumber++;
+
 	//	}
 // 		else {
 // 			FollowTarget->SetWorldLocation(Target2->GetComponentLocation());
@@ -234,10 +211,10 @@ void ACppTurret::ChangeBeamTarget()
 // 라인트레이스로 캐릭터와의 충돌 감지
 void ACppTurret::TraceBeam()
 {
-	
+
 	FHitResult HitResult;
-	FVector Start =TurretMesh->GetSocketLocation("BeamSocket");
-	FVector End=Start+Beam1->GetRightVector()* -3000;
+	FVector Start = TurretMesh->GetSocketLocation("BeamSocket");
+	FVector End = Start + Beam1->GetRightVector() * -3000;
 
 	FCollisionObjectQueryParams objQueryParams;
 	objQueryParams.AddObjectTypesToQuery(ECC_WorldStatic);
@@ -246,41 +223,41 @@ void ACppTurret::TraceBeam()
 	FCollisionQueryParams queryParams;
 	queryParams.AddIgnoredActor(this);
 	bool bResult = GetWorld()->LineTraceSingleByObjectType(HitResult, Start, End, objQueryParams, queryParams);
-	
+
 	if (bResult)
 	{
 		DrawDebugLine(GetWorld(), Start, HitResult.ImpactPoint, FColor(0, 255, 0), false, 2.0f, 0, 1);
 		CheckEnemy(HitResult.GetActor());
 		//UE_LOG(LogTemp, Warning, TEXT("%s"),*HitResult.GetActor()->GetActorNameOrLabel());
-		}
-	else {
-		
 	}
-// 	FCollisionQueryParams CollQueryParams;
-// 	CollQueryParams.AddIgnoredActor(this);
-// 
-// 	bool bHit=GetWorld()->LineTraceSingleByChannel(OUT HitResult, Start, End, ECollisionChannel::ECC_Camera, CollQueryParams);
-// 
-// 	if (bHit) {
-// 		CheckEnemy(HitResult.GetActor());
-// 	}
-// 	else{
-// 		UE_LOG(LogTemp, Warning, TEXT("else"));
-// 	}
+	else {
+
+	}
+	// 	FCollisionQueryParams CollQueryParams;
+	// 	CollQueryParams.AddIgnoredActor(this);
+	// 
+	// 	bool bHit=GetWorld()->LineTraceSingleByChannel(OUT HitResult, Start, End, ECollisionChannel::ECC_Camera, CollQueryParams);
+	// 
+	// 	if (bHit) {
+	// 		CheckEnemy(HitResult.GetActor());
+	// 	}
+	// 	else{
+	// 		UE_LOG(LogTemp, Warning, TEXT("else"));
+	// 	}
 }
 
-void ACppTurret::CheckEnemy(AActor* HitActor) 
+void ACppTurret::CheckEnemy(AActor* HitActor)
 {
 	if (HitActor->Implements<UCharacterInterface>()) {
 
-		bool bEnemy=ICharacterInterface::Execute_IsEnemy(HitActor);
+		bool bEnemy = ICharacterInterface::Execute_IsEnemy(HitActor);
 
 		if (bEnemy) {
-			Enemy=HitActor;
-		//	UE_LOG(LogTemp,Warning,TEXT("qqqqqqqqqqqqqqqqqqqqqq"));
+			Enemy = HitActor;
+			//	UE_LOG(LogTemp,Warning,TEXT("qqqqqqqqqqqqqqqqqqqqqq"));
 		}
 		else {
-			
+
 		}
 	}
 }
@@ -290,9 +267,9 @@ void ACppTurret::FollowEnemy(float DeltaTime)
 	FVector Start = TurretMesh->GetSocketLocation("BeamSocket");
 	FVector End = Enemy->GetActorLocation();
 
-	FRotator RotationToEnemy=UKismetMathLibrary::FindLookAtRotation(Start,End);
+	FRotator RotationToEnemy = UKismetMathLibrary::FindLookAtRotation(Start, End);
 
-	LookAtRotation=FMath::RInterpTo(LookAtRotation,RotationToEnemy,DeltaTime,10);
+	LookAtRotation = FMath::RInterpTo(LookAtRotation, RotationToEnemy, DeltaTime, 10);
 
 	if (TurretMesh->GetAnimInstance()->Implements<UTurretAnimInterface>()) {
 		ITurretAnimInterface::Execute_UpdateLookAtRotation(TurretMesh->GetAnimInstance(), LookAtRotation);
