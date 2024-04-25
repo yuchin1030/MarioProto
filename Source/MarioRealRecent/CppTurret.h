@@ -18,34 +18,22 @@ private:
 	USceneComponent* Root;
 
 	UPROPERTY(EditAnywhere)
-	class UArrowComponent* violet1;
-
-	UPROPERTY(EditAnywhere)
-	class UArrowComponent* violet2;
-
-	UPROPERTY(EditAnywhere)
-	class UArrowComponent* violet3;
-
-	UPROPERTY(EditAnywhere)
-	class UArrowComponent* violet4;
-
-	UPROPERTY(EditAnywhere)
-	class UArrowComponent* violet5;
-
-	UPROPERTY(EditAnywhere)
-	class UArrowComponent* violet6;
-
-	UPROPERTY(EditAnywhere)
-	class UArrowComponent* violet7;
-
-	UPROPERTY(EditAnywhere)
-	class UArrowComponent* violet8;
-
-	UPROPERTY(EditAnywhere)
 	class UArrowComponent* spawnArrow;
 
 	UPROPERTY(EditAnywhere)
-	class UArrowComponent* white;
+	class UArrowComponent* spawnArrowV1;
+
+	UPROPERTY(EditAnywhere)
+	class UArrowComponent* spawnArrowV2;
+
+	UPROPERTY(EditAnywhere)
+	class UArrowComponent* spawnArrowV3;
+
+	UPROPERTY(EditAnywhere)
+	class UArrowComponent* spawnArrowV4;
+
+	UPROPERTY(EditAnywhere)
+	class UArrowComponent* spawnArrowW;
 
 	UPROPERTY(EditAnywhere)
 	float delayTime = 10.0f;
@@ -99,6 +87,8 @@ private:
 	FRotator TargetRotation;
 	FRotator RotationDelta;
 
+	UPROPERTY(EditAnywhere)
+	float anytimeScaler = 1.0f;
 
 	UPROPERTY(EditAnywhere)
 	float ChangeTargetDelay=3.5f;
