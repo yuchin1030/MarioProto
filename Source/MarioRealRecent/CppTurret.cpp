@@ -49,20 +49,32 @@ ACppTurret::ACppTurret()
 	spawnArrow = CreateDefaultSubobject<UArrowComponent>(TEXT("Arrow Component"));
 	spawnArrow->SetupAttachment(Beam1);
 
-	spawnArrowV1 = CreateDefaultSubobject<UArrowComponent>(TEXT("Arrow Component1"));
-	spawnArrowV1->SetupAttachment(Beam1);
+	violet1 = CreateDefaultSubobject<UArrowComponent>(TEXT("violet1"));
+	violet1->SetupAttachment(Beam1);
 
-	spawnArrowV2 = CreateDefaultSubobject<UArrowComponent>(TEXT("Arrow Component2"));
-	spawnArrowV2->SetupAttachment(Beam1);
+	violet2 = CreateDefaultSubobject<UArrowComponent>(TEXT("violet2"));
+	violet2->SetupAttachment(Beam1);
 
-	spawnArrowV3 = CreateDefaultSubobject<UArrowComponent>(TEXT("Arrow Component3"));
-	spawnArrowV3->SetupAttachment(Beam1);
+	violet3 = CreateDefaultSubobject<UArrowComponent>(TEXT("violet3"));
+	violet3->SetupAttachment(Beam1);
 
-	spawnArrowV4 = CreateDefaultSubobject<UArrowComponent>(TEXT("Arrow Component4"));
-	spawnArrowV4->SetupAttachment(Beam1);
+	violet4 = CreateDefaultSubobject<UArrowComponent>(TEXT("violet4"));
+	violet4->SetupAttachment(Beam1);
 
-	spawnArrowW = CreateDefaultSubobject<UArrowComponent>(TEXT("Arrow Component5"));
-	spawnArrowW->SetupAttachment(Beam1);
+	violet5 = CreateDefaultSubobject<UArrowComponent>(TEXT("violet5"));
+	violet5->SetupAttachment(Beam1);
+
+	violet6 = CreateDefaultSubobject<UArrowComponent>(TEXT("violet6"));
+	violet6->SetupAttachment(Beam1);
+
+	violet7 = CreateDefaultSubobject<UArrowComponent>(TEXT("violet7"));
+	violet7->SetupAttachment(Beam1);
+
+	violet8 = CreateDefaultSubobject<UArrowComponent>(TEXT("violet8"));
+	violet8->SetupAttachment(Beam1);
+
+	white = CreateDefaultSubobject<UArrowComponent>(TEXT("White"));
+	white->SetupAttachment(Beam1);
 
 }
 
@@ -84,8 +96,8 @@ void ACppTurret::Tick(float DeltaTime)
 	UpdateLookAtTarget(DeltaTime);
 	UE_LOG(LogTemp, Warning, TEXT("%f"), anyTime);
 	currentTime += DeltaTime;
-	anyTime += DeltaTime ;
-	if (anyTime >15.0f && anyTime<=27.0f) {
+	anyTime += DeltaTime;
+	if (anyTime < 28 && anyTime>15) {
 		if (!bFireBall) {
 			UpdateLookAtTarget(DeltaTime);
 			if (currentTime > BalldelayTime) {
@@ -110,7 +122,7 @@ void ACppTurret::Tick(float DeltaTime)
 		}
 	}
 
-	else if (anyTime > 53 && anyTime < 83) {
+	else if (anyTime > 44 && anyTime < 74) {
 		if (bIsWearingHat) {
 			anyTime=0;
 			TimeLineTime++;
@@ -119,18 +131,20 @@ void ACppTurret::Tick(float DeltaTime)
 		UpdateLookAtTarget(DeltaTime);
 		if (currentTime > delayTime) {
 			bFireBall = true;
-			GetWorld()->SpawnActor<AKoopa_FirstVioletHat>(violet_bp1, spawnArrowV1->GetComponentLocation(), spawnArrowV1->GetRelativeRotation());
-			GetWorld()->SpawnActor<AKoopa_Violethat>(violet_bp, spawnArrowV2->GetComponentLocation(), spawnArrowV2->GetRelativeRotation() );
-			GetWorld()->SpawnActor<AKoopa_WhiteHat>(white_bp, spawnArrowW->GetComponentLocation(), spawnArrowW->GetRelativeRotation());
-			GetWorld()->SpawnActor<AKoopa_Violethat>(violet_bp, spawnArrowV3->GetComponentLocation(), spawnArrowV3->GetRelativeRotation());
-			GetWorld()->SpawnActor<AKoopa_SecondVioletHat>(violet_bp2, spawnArrowV4->GetComponentLocation(), spawnArrowV4->GetRelativeRotation());
+			GetWorld()->SpawnActor<AKoopa_FirstVioletHat>(violet_bp1, violet1->GetComponentLocation(), violet1->GetComponentRotation());
+			GetWorld()->SpawnActor<AKoopa_Violethat>(violet_bp, violet2->GetComponentLocation(), violet2->GetComponentRotation());
+			GetWorld()->SpawnActor<AKoopa_WhiteHat>(white_bp, white->GetComponentLocation(), white->GetComponentRotation());
+			GetWorld()->SpawnActor<AKoopa_Violethat>(violet_bp, violet3->GetComponentLocation(), violet3->GetComponentRotation());
+			GetWorld()->SpawnActor<AKoopa_Violethat>(violet_bp, violet4->GetComponentLocation(), violet4->GetComponentRotation());
+			GetWorld()->SpawnActor<AKoopa_SecondVioletHat>(violet_bp2, violet5->GetComponentLocation(), violet5->GetComponentRotation());
+			GetWorld()->SpawnActor<AKoopa_FirstVioletHat>(violet_bp1, violet6->GetComponentLocation(), violet6->GetComponentRotation());
+			GetWorld()->SpawnActor<AKoopa_Violethat>(violet_bp, violet7->GetComponentLocation(), violet7->GetComponentRotation());
+			GetWorld()->SpawnActor<AKoopa_SecondVioletHat>(violet_bp2, violet8->GetComponentLocation(), violet8->GetComponentRotation());
 			currentTime = 0;
-
-			UE_LOG(LogTemp, Warning, TEXT("%f, %f, %f"), spawnArrowV2->GetRelativeRotation().Roll, spawnArrowV2->GetRelativeRotation().Pitch, spawnArrowV2->GetRelativeRotation().Yaw)
 		}
 		}
 	}
-	else if (anyTime > 83)
+	else if (anyTime > 75)
 	{
 		anyTime = 0;
 		TimeLineTime++;
