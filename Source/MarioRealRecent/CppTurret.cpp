@@ -50,31 +50,31 @@ ACppTurret::ACppTurret()
 	spawnArrow->SetupAttachment(Beam1);
 
 	violet1 = CreateDefaultSubobject<UArrowComponent>(TEXT("violet1"));
-	violet1->SetupAttachment(TurretMesh);
+	violet1->SetupAttachment(Beam1);
 
 	violet2 = CreateDefaultSubobject<UArrowComponent>(TEXT("violet2"));
-	violet2->SetupAttachment(TurretMesh);
+	violet2->SetupAttachment(Beam1);
 
 	violet3 = CreateDefaultSubobject<UArrowComponent>(TEXT("violet3"));
-	violet3->SetupAttachment(TurretMesh);
+	violet3->SetupAttachment(Beam1);
 
 	violet4 = CreateDefaultSubobject<UArrowComponent>(TEXT("violet4"));
-	violet4->SetupAttachment(TurretMesh);
+	violet4->SetupAttachment(Beam1);
 
 	violet5 = CreateDefaultSubobject<UArrowComponent>(TEXT("violet5"));
-	violet5->SetupAttachment(TurretMesh);
+	violet5->SetupAttachment(Beam1);
 
 	violet6 = CreateDefaultSubobject<UArrowComponent>(TEXT("violet6"));
-	violet6->SetupAttachment(TurretMesh);
+	violet6->SetupAttachment(Beam1);
 
 	violet7 = CreateDefaultSubobject<UArrowComponent>(TEXT("violet7"));
-	violet7->SetupAttachment(TurretMesh);
+	violet7->SetupAttachment(Beam1);
 
 	violet8 = CreateDefaultSubobject<UArrowComponent>(TEXT("violet8"));
-	violet8->SetupAttachment(TurretMesh);
+	violet8->SetupAttachment(Beam1);
 
 	white = CreateDefaultSubobject<UArrowComponent>(TEXT("White"));
-	white->SetupAttachment(TurretMesh);
+	white->SetupAttachment(Beam1);
 
 }
 
@@ -97,7 +97,7 @@ void ACppTurret::Tick(float DeltaTime)
 	UE_LOG(LogTemp, Warning, TEXT("%f"), anyTime);
 	currentTime += DeltaTime;
 	anyTime += DeltaTime;
-	if (anyTime < 27 && anyTime>15) {
+	if (anyTime < 28 && anyTime>15) {
 		if (!bFireBall) {
 			UpdateLookAtTarget(DeltaTime);
 			if (currentTime > BalldelayTime) {
