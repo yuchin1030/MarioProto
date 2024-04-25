@@ -30,7 +30,7 @@ void AKoopa_WhiteHat::BeginPlay()
 		
 		}
 	
-	//moveDirection = GetActorForwardVector();
+	//moveDirection1 = GetActorForwardVector();
 	SetLifeSpan(10.0f);
 }
 
