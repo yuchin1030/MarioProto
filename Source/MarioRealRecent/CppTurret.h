@@ -39,7 +39,7 @@ private:
 	float delayTime = 10.0f;
 
 	UPROPERTY(EditAnywhere)
-	float BalldelayTime = 2.0f;
+	float BalldelayTime = 1.5f;
 
 
 

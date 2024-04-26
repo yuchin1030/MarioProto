@@ -125,6 +125,7 @@ void ACppTurret::Tick(float DeltaTime)
 			GetWorld()->SpawnActor<AKoopa_Violethat>(violet_bp, spawnArrowV3->GetComponentLocation(), spawnArrowV3->GetRelativeRotation());
 			GetWorld()->SpawnActor<AKoopa_SecondVioletHat>(violet_bp2, spawnArrowV4->GetComponentLocation(), spawnArrowV4->GetRelativeRotation());
 			currentTime = 0;
+			
 
 			UE_LOG(LogTemp, Warning, TEXT("%f, %f, %f"), spawnArrowV2->GetRelativeRotation().Roll, spawnArrowV2->GetRelativeRotation().Pitch, spawnArrowV2->GetRelativeRotation().Yaw)
 		}

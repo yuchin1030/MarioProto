@@ -31,7 +31,7 @@ void AKoopa_WhiteHat::BeginPlay()
 		}
 	
 	//moveDirection1 = GetActorForwardVector();
-	SetLifeSpan(10.0f);
+	SetLifeSpan(15.0f);
 }
 
 // Called every frame
