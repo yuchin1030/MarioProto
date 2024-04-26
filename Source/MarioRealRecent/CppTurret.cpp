@@ -51,7 +51,7 @@ ACppTurret::ACppTurret()
 
 	spawnArrowV1 = CreateDefaultSubobject<UArrowComponent>(TEXT("Arrow Component1"));
 	spawnArrowV1->SetupAttachment(Beam1);
-
+	
 	spawnArrowV2 = CreateDefaultSubobject<UArrowComponent>(TEXT("Arrow Component2"));
 	spawnArrowV2->SetupAttachment(Beam1);
 
@@ -213,7 +213,7 @@ void ACppTurret::TraceBeam()
 
 	if (bResult)
 	{
-		DrawDebugLine(GetWorld(), Start, HitResult.ImpactPoint, FColor(0, 255, 0), false, 2.0f, 0, 1);
+		//DrawDebugLine(GetWorld(), Start, HitResult.ImpactPoint, FColor(0, 255, 0), false, 2.0f, 0, 1);
 		CheckEnemy(HitResult.GetActor());
 		//UE_LOG(LogTemp, Warning, TEXT("%s"),*HitResult.GetActor()->GetActorNameOrLabel());
 	}
